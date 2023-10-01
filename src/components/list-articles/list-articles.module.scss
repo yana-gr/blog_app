@@ -1,0 +1,29 @@
+$background-color-header: #ffffff;
+$font-color: rgba(0, 0, 0, 0.85);
+
+.list_articles {
+  display: flex;
+  gap: 26px;
+  width: 65%;
+  flex-direction: column;
+  justify-content: space-between;
+  color: $font-color;
+}
+
+.pagination {
+  padding-bottom: 17px;
+}
+
+.error {
+  position: absolute;
+  top: 50%;
+  color: red;
+  font-size: 36px;
+  font-style: normal;
+}
+
+.spin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}

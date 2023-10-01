@@ -1,0 +1,98 @@
+$title-color: #1890ff;
+$background-color-article: #ffffff;
+$secondary-text: rgba(0, 0, 0, 0.5);
+
+.article {
+  display: grid;
+  grid-template-columns: 70% 20% 46px;
+  height: 140px;
+  gap: 12px;
+  justify-content: space-between;
+  padding: 15px;
+  width: 100%;
+  padding-inline-start: 0;
+  border-radius: 5px;
+  background-color: $background-color-article;
+
+  &__main {
+    margin-left: 19px;
+  }
+
+  &__title_like {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+
+  &__title {
+    display: inline;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+    margin-right: 13px;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    color: $title-color;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-decoration: none;
+  }
+
+  &__like {
+    margin-right: 5px;
+  }
+
+  &__tags {
+    border-radius: 2px;
+    border: 1px solid $secondary-text;
+    padding: 3px 5px;
+    margin-right: 5px;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: $secondary-text;
+  }
+
+  &__text {
+    margin-top: 5px;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__name_date {
+    justify-self: end;
+  }
+
+  &__name {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__date {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    color: $secondary-text;
+  }
+
+  &__avatar {
+    width: 46px;
+    height: 46px;
+  }
+}

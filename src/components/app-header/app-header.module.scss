@@ -1,0 +1,51 @@
+$background-color-header: #ffffff;
+$font-color: rgba(0, 0, 0, 0.85);
+
+.header {
+  display: flex;
+  min-height: 80px;
+  margin: 0 auto;
+  padding: 0 22px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: $background-color-header;
+
+  &__name {
+    margin-right: auto;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+    color: $font-color;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    text-decoration: none;
+  }
+
+  &__signIn {
+    width: 109px;
+    height: 51px;
+    margin-right: 19px;
+    color: $font-color;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+    background: transparent;
+    border: transparent;
+  }
+
+  &__signUp {
+    width: 109px;
+    height: 51px;
+    border-radius: 5px;
+    border: 1px solid #52c41a;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+    color: #52c41a;
+    background: transparent;
+  }
+}
