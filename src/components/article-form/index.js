@@ -2,17 +2,18 @@ import { useRef, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useForm, useFieldArray } from 'react-hook-form'
 
-import classes from './article-form.module.scss'
 import { clearArticleError } from '../../store/store'
 
-const ArticleForm = ({ componentTitle, errorMessage, onSubmit, title, description, body, tags = [] }) => {
+import classes from './article-form.module.scss'
+
+export default function ArticleForm({ componentTitle, errorMessage, onSubmit, title, description, body, tags = [] }) {
   const newTagField = useRef(null)
+
+  const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(clearArticleError())
   }, [])
-
-  const dispatch = useDispatch()
 
   const error = useSelector((state) => state.openedArticle.error)
 
@@ -42,7 +43,7 @@ const ArticleForm = ({ componentTitle, errorMessage, onSubmit, title, descriptio
           required: true,
         })}
         className={errors?.title ? classes.invalid : undefined}
-      ></input>
+      />
 
       <label>Short description</label>
       <input
@@ -51,7 +52,7 @@ const ArticleForm = ({ componentTitle, errorMessage, onSubmit, title, descriptio
           required: true,
         })}
         className={errors?.description ? classes.invalid : undefined}
-      ></input>
+      />
 
       <label>Text</label>
       <textarea
@@ -61,31 +62,29 @@ const ArticleForm = ({ componentTitle, errorMessage, onSubmit, title, descriptio
           required: true,
         })}
         className={errors?.body ? classes.invalid : undefined}
-      ></textarea>
+      />
 
       <label>Tags</label>
       <ul>
-        {fields.map((tag, index) => {
-          return (
-            <li key={tag.id}>
-              <input
-                placeholder={errors?.tagList ? 'Requied' : 'Tag'}
-                {...register(`tagList[${index}]`, {
-                  required: true,
-                })}
-                className={errors?.tagList && index === fields.length - 1 ? classes.invalid : undefined}
-              />
-              <button type="button" className={classes.delete} onClick={() => remove(index)}>
-                Delete
+        {fields.map((tag, index) => (
+          <li key={tag.id}>
+            <input
+              placeholder={errors?.tagList ? 'Requied' : 'Tag'}
+              {...register(`tagList[${index}]`, {
+                required: true,
+              })}
+              className={errors?.tagList && index === fields.length - 1 ? classes.invalid : undefined}
+            />
+            <button type="button" className={classes.delete} onClick={() => remove(index)}>
+              Delete
+            </button>
+            {index < fields.length - 1 ? null : (
+              <button type="button" className={classes.add} onClick={() => append('')}>
+                Add tag
               </button>
-              {index < fields.length - 1 ? null : (
-                <button type="button" className={classes.add} onClick={() => append('')}>
-                  Add tag
-                </button>
-              )}
-            </li>
-          )
-        })}
+            )}
+          </li>
+        ))}
         {fields.length === 0 && (
           <li>
             <input placeholder="Tag" ref={newTagField} />
@@ -103,10 +102,8 @@ const ArticleForm = ({ componentTitle, errorMessage, onSubmit, title, descriptio
         )}
       </ul>
 
-      <input type="submit" disabled={!isValid}></input>
+      <input type="submit" disabled={!isValid} />
       {error && <section className={classes.warrning}>{errorMessage}</section>}
     </form>
   )
 }
-
-export default ArticleForm
