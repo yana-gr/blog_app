@@ -2,13 +2,19 @@ $title-color: #1890ff;
 $background-color-article: #ffffff;
 $secondary-text: rgba(0, 0, 0, 0.5);
 
+.wrapper {
+  position: absolute;
+  top: 105px;
+  width: 65%;
+}
+
 .article {
   display: grid;
   grid-template-columns: 70% 20% 46px;
   gap: 12px;
   justify-content: space-between;
   padding: 15px;
-  width: 65%;
+  width: 100%;
   padding-inline-start: 0;
   border-radius: 5px;
   background-color: $background-color-article;
@@ -108,4 +114,10 @@ $secondary-text: rgba(0, 0, 0, 0.5);
   position: absolute;
   top: 50%;
   left: 50%;
+}
+
+.body {
+  margin-left: 17px;
+  white-space: normal;
+  overflow-wrap: break-word;
 }

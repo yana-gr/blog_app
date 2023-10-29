@@ -1,0 +1,98 @@
+$red: #f5222d;
+$blue: #1890ff;
+.form {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  width: 60%;
+  margin-top: 26px;
+  padding: 48px 32px;
+  border: 1px solid #d9d9d9;
+  border-radius: 6px;
+  box-shadow:
+    0px 22px 106px rgba(0, 0, 0, 0.07),
+    0px 9.19107px 44.2843px rgba(0, 0, 0, 0.0503198),
+    0px 4.91399px 23.6765px rgba(0, 0, 0, 0.0417275),
+    0px 2.75474px 13.2728px rgba(0, 0, 0, 0.035),
+    0px 1.46302px 7.04911px rgba(0, 0, 0, 0.0282725),
+    0px 0.608796px 2.93329px rgba(0, 0, 0, 0.0196802);
+  background-color: #fff;
+  color: #262626;
+  & h2 {
+    margin-block-start: 0;
+    margin-block-end: 21px;
+    font-size: 20px;
+    line-height: 28px;
+    text-align: center;
+  }
+  & label {
+    font-size: 14px;
+    line-height: 22px;
+  }
+  & input,
+  textarea {
+    padding: 8px 12px;
+    margin-bottom: 21px;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    font-size: 16px;
+    font-family: inherit;
+    line-height: 24px;
+    resize: none;
+    &::placeholder {
+      color: #bfbfbf;
+    }
+    &.invalid {
+      border-color: $red;
+      &::placeholder {
+        color: rgba($red, 0.6);
+      }
+    }
+    &[type='submit'] {
+      max-width: 320px;
+      margin: 0;
+      background-color: $blue;
+      color: #fff;
+      cursor: pointer;
+      &:disabled {
+        background-color: rgba($blue, 0.6);
+        cursor: not-allowed;
+      }
+    }
+  }
+  & ul {
+    margin: 0;
+    margin-block: 0;
+    padding: 0;
+    list-style: none;
+    & li {
+      margin: 0;
+      margin-block: 0;
+      & button {
+        margin-left: 18px;
+        background-color: #fff;
+        border: 1px solid;
+        border-radius: 4px;
+        font-size: 16px;
+        line-height: 24px;
+        font-family: inherit;
+        &.delete {
+          padding: 7px 36px;
+          color: $red;
+          border-color: $red;
+        }
+        &.add {
+          padding: 7px 40px;
+          color: $blue;
+          border-color: $blue;
+        }
+      }
+    }
+  }
+  & .warrning {
+    color: $red;
+    text-align: left;
+    font-size: 14px;
+    line-height: 22px;
+  }
+}

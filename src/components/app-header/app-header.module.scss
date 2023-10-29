@@ -34,6 +34,7 @@ $font-color: rgba(0, 0, 0, 0.85);
     line-height: 28px;
     background: transparent;
     border: transparent;
+    cursor: pointer;
   }
 
   &__signUp {
@@ -47,5 +48,58 @@ $font-color: rgba(0, 0, 0, 0.85);
     line-height: 28px;
     color: #52c41a;
     background: transparent;
+    cursor: pointer;
+  }
+
+  &__create {
+    padding: 6px 10px;
+    margin-right: 27px;
+    background: transparent;
+    border: 1px solid #52c41a;
+    border-radius: 5px;
+    color: #52c41a;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    text-decoration: none;
+  }
+
+  &__user {
+    display: flex;
+    border-radius: 5px;
+    color: rgba(0, 0, 0, 0.85);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    text-decoration: none;
+    margin-right: 15px;
+    vertical-align: middle;
+  }
+
+  &__userName {
+    text-align: center;
+    align-self: center;
+  }
+
+  &__logOut {
+    padding: 10px 18px;
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.75);
+    border-radius: 5px;
+    color: rgba(0, 0, 0, 0.85);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    text-decoration: none;
+  }
+
+  &__avatar {
+    margin-left: 5px;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
   }
 }
