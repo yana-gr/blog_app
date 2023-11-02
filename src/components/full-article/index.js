@@ -1,6 +1,6 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useParams, useLocation } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { Spin } from 'antd'
@@ -8,14 +8,15 @@ import { LoadingOutlined } from '@ant-design/icons'
 import { nanoid } from '@reduxjs/toolkit'
 import { format } from 'date-fns'
 
+import blogPlatformService from '../../service/blogPlatformService'
 import ArticleButtons from '../article-buttons'
-// import ArticleInfo from '../ArticleInfo/ArticleInfo'
 import { getArticle } from '../../store/store'
 
-import heart from './heart.svg'
 import classes from './fullArticle.module.scss'
 
 function ArticleFull() {
+  const location = useLocation()
+
   const dispatch = useDispatch()
 
   const article = useSelector((state) => state.openedArticle.article)
@@ -32,6 +33,21 @@ function ArticleFull() {
     dispatch(getArticle({ slug, token: isAuthorized ? token : null }))
   }, [isAuthorized])
 
+  const [_favoritesCount, setFavoritesCount] = useState(location.state._favoritesCount)
+  const [_favorited, setFavorited] = useState(location.state._favorited)
+
+  const like = async () => {
+    try {
+      const resp = await blogPlatformService.favoriteArticle(slug, token, location.state._favorited)
+      if (resp.ok) {
+        setFavoritesCount(_favoritesCount + (_favorited ? -1 : 1))
+        setFavorited(!_favorited)
+      }
+    } catch (err) {
+      return err
+    }
+  }
+
   if (loading || !article)
     return <Spin className={classes.spin} size="large" indicator={<LoadingOutlined style={{ fontSize: 50 }} spin />} />
 
@@ -44,8 +60,16 @@ function ArticleFull() {
           <div className={classes.article__main}>
             <div className={classes.article__title_like}>
               <h6 className={classes.article__title}>{article.title}</h6>
-              <img src={heart} alt="heart" className={classes.article__like} />
-              <span className={classes.article__count_like}>{article.favoritesCount}</span>
+              <button
+                type="button"
+                className={[
+                  classes['article__like-button'],
+                  classes[!_favorited ? 'article__like-button_liked' : 'article__like-button_no-liked'],
+                ].join(' ')}
+                onClick={isAuthorized ? like : undefined}
+              >
+                {_favoritesCount}
+              </button>
             </div>
             {article.tagList.map((tag) => (
               <span className={classes.article__tags} key={nanoid()}>
